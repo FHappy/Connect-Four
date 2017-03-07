@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 433.333333333333 433.333333333333">
+<defs>
+<linearGradient id="linearGradient1697">
+<stop offset="0" stop-color="#db210e"/>
+<stop offset="1" stop-color="#761107"/>
+</linearGradient>
+<linearGradient id="linearGradient1078" x1=".47862" x2=".4826" y1="-.03771" y2="1.3212">
+<stop offset="0" stop-color="#fff" stop-opacity=".69072"/>
+<stop offset="1" stop-color="#fff" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="linearGradient1076" x2="0" xlink:href="#linearGradient1697" y1="Infinity" y2="-Infinity"/>
+<linearGradient id="linearGradient1077" x2="0" xlink:href="#linearGradient1697" y1="-Infinity" y2="Infinity"/>
+</defs>
+<title>CMS</title>
+<title>Layer 1</title>
+<path d="m393.36804,204.39049a190.40366,190.40366 0 1,1 -380.80732,0 190.40366,190.40366 0 1,1 380.80732,0z" fill="url(#linearGradient1076)" stroke="url(#linearGradient1077)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.36445"/>
+<path d="m341.27817,154.23671c44.36722-.96678-12.40012-123.15286-135.68098-123.80277-134.56152-.68712-162.09595,110.96136-140.71945,112.99722 0,0 36.86417,5.06261 71.93958,14.85608 56.47266,15.93082 125.54915-13.06924 152.76872-17.2836 30.34253-4.69788 47.37344,15.39243 51.69214,13.23308z" fill="url(#linearGradient1078)" fill-rule="evenodd" opacity=".9"/>
+</svg>
