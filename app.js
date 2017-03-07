@@ -30,7 +30,7 @@ const Game = {
   move: function(x, y) {
     var $currentCell = $(`#pos${x}-${y}`);
     $currentCell.attr('valid', false)
-                .attr('player', this.currentTurn);
+                .attr('player', this.currentTurn)
                 .removeClass('valid');
     x = parseInt(x);
 
