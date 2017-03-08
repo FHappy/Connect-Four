@@ -15,6 +15,7 @@ var player2 = {
 
 const Game = {
   gameBoard: [[], [], [], [], [], [], []],
+  startingTurn: player1.name,
   currentTurn: player1.name,
   winner: false,
   initialize: function() {
@@ -177,8 +178,13 @@ const Game = {
 
   newGame: function() {
     this.gameBoard = [[], [], [], [], [], [], []];
-    this.currentTurn = player1.name;
     this.winner = false;
+    if (this.startingTurn === player1.name) {
+      this.startingTurn = player2.name;
+      this.currentTurn = player2.name;
+    } else {
+    this.currentTurn = player1.name;
+    }
     this.initialize();
   }
 }
