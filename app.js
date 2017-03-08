@@ -6,11 +6,13 @@ window.onload = function() {
 
 var player1 = {
   name: "Deadpool",
-  score: 0
+  score: 0,
+  img: "images/deadpool.svg"
 }
 var player2 = {
   name: "The Flash",
-  score: 0
+  score: 0,
+  img: "images/flash.svg"
 }
 
 const Game = {
@@ -196,11 +198,11 @@ const Presenter = {
     cell.removeClass('animated infinite');
     if (Game.currentTurn === player1.name) {
       cell.addClass('animated fadeInDownBig');
-      cell.html('<img src="deadpool.svg">');
+      cell.html('<img src="images/deadpool.svg">');
       $header.html(`${player2.name}'s Turn!`);
     } else {
       cell.addClass('animated fadeInDownBig');
-      cell.html('<img src="flash.svg">');
+      cell.html('<img src="images/flash.svg">');
       $header.html(`${player1.name}'s Turn!`);
     }
   },

@@ -1,7 +1,10 @@
 body {
-  background-image: url("stars.png");
+  background-image: url("images/stars.png");
   background-repeat: repeat-y;
   color: #fff;
+  font-family: '8BITWONDERNominal';
+  font-weight: normal;
+  font-style: normal;
 }
 .page-header h1 {
   text-align: center;
@@ -103,3 +106,8 @@ img {
   text-align: center;
   margin: 0;
 }
+
+/*@font-face {
+  font-family: eightBit;
+  src: 8-BIT-WONDER.TTF;
+}*/
