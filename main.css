@@ -54,10 +54,24 @@ body {
 
 .cell {
   padding: 12%;
-
-
 }
 
+@media only screen and (min-width: 1200px) {
+  .cell{
+    height: 125px;
+  }
+}
+@media only screen and (min-width: 400px) and (max-width: 767px) {
+  .cell {
+    height: 75px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .cell {
+    height: 50px;
+  }
+}
 img {
   height: 100%;
   width: 100%;
