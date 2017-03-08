@@ -15,6 +15,7 @@ var player2 = {
   img: "images/flash.svg"
 }
 
+
 const Game = {
   gameBoard: [[], [], [], [], [], [], []],
   startingTurn: player1.name,
