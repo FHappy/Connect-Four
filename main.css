@@ -1,10 +1,17 @@
+body {
+  background-image: url("stars.png");
+  background-repeat: no-repeat;
+  color: #fff;
+}
 .page-header h1 {
   text-align: center;
   text-decoration: underline;
   size: 50px;
   font: Helvetica;
 }
-
+.jumbotron {
+  background: none;
+}
 .row {
   text-align: center;
   display: flex;
@@ -45,6 +52,10 @@
   /*background-color: red;*/
 }
 
+.cell {
+  padding: 10%;
+}
+
 img {
   height: 100%;
   width: 100%;
@@ -55,4 +66,8 @@ img {
 
 .valid:hover {
   background: turquoise;
+}
+
+.modal {
+  color: #000;
 }

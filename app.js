@@ -1,14 +1,24 @@
-var player1 = "Red";
-var player2 = "Yellow";
 
-// initialize gameBoard
+window.onload = function() {
+  Game.initialize();
+  $('#New-Game').on('click', AppController.onClickNewGame);
+};
 
+var player1 = {
+  name: "Red",
+  score: 0
+}
+var player2 = {
+  name: "Yellow",
+  score: 0
+}
 
 const Game = {
   gameBoard: [[], [], [], [], [], [], []],
-  currentTurn: player1,
+  currentTurn: player1.name,
   winner: false,
   initialize: function() {
+    // initialize gameBoard
     //apply basic attributes and functionality to all positions
     for (var i = 0; i < 7; i++) {
       for (var j = 0; j < 6; j++) {
@@ -28,7 +38,6 @@ const Game = {
   },
 
   move: function(x, y) {
-    console.log(this);
     var $currentCell = $(`#pos${x}-${y}`);
     $currentCell.attr('valid', false)
                 .attr('player', this.currentTurn)
@@ -52,37 +61,35 @@ const Game = {
   },
 
   updateTurn: function() {
-    if (this.currentTurn === player1) {
-      this.currentTurn = player2;
-    } else {this.currentTurn = player1;}
+    if (this.currentTurn === player1.name) {
+      this.currentTurn = player2.name;
+    } else {this.currentTurn = player1.name;}
   },
 
   isWinningCombination: function(combination, player) {
     for (var i = 0; i < 4; i++) {
-      console.log('combination is: ');
-      console.log(combination);
       if (combination[i].getAttribute('player') !== player) {
-        console.log(`current combination value is ${combination[i]}`);
-        return false;
+        return '';
       }
     }
-    return true;
+    this.winner = true;
+    // return true;
+    var modalBody = $('#gameOverModalBody');
+    modalBody.append(`<p>${player} wins!</p>`);
+    $('#gameOverModal').modal('show');
   },
 
   checkWinningCombinations: function(x, y, player) {
     // check every possible row combination
     //four possible row combinations regardless of where the tile is placed
     //i.e (0,0) -> (3,0), (1,0) -> (4,0), (2,0) -> (5,0), (3,0) -> (6,0)
-    //iterate three times, within each iteration add the current value plus three more
+    //iterate three times, within each iteration add the current cell plus three more
     for (var i = 0; i < 4; i++) {
       var tempRow = [];
       for (var j = i; j < i + 4; j++) {
-        console.log(`j is ${j}`);
         tempRow.push(this.gameBoard[j][y]);
       }
-      if (this.isWinningCombination(tempRow, player)) {
-        alert(`Game over! ${player} wins!`);
-      }
+      this.isWinningCombination(tempRow, player);
     }
 
     // check the only possible column combination
@@ -91,11 +98,9 @@ const Game = {
       for (var j = y - 3; j < y + 1; j++) {
         tempCol.push(this.gameBoard[x][j]);
       }
-      if (this.isWinningCombination(tempCol, player)) {
-        alert(`Game over! ${player} wins!`);
-      }
+      this.isWinningCombination(tempCol, player);
     }
-    console.log('cleared column check');
+
     // check all the positive sloped diagonals
     //first check for danger zone (i.e. no right hand diagonal available)
     if (!((x <= y - 3) && (y >= 3)) && !((x >= 4) && (y <= x - 4))) {
@@ -113,8 +118,7 @@ const Game = {
       // you can check up to three diagonals
       while (startX <= 3 && startY <= 2) {
         var tempDiag = [];
-        // make a loop that iterates 4 times
-        console.log(`starting x coordin is ${startX}, starting y is ${startY}`);
+        // make a loop that iterates 4 times so we can check the combination
         var rowIndex = startX;
         var colIndex = startY;
         for (var k = 0; k < 4; k++) {
@@ -123,9 +127,7 @@ const Game = {
           colIndex++;
         }
         // check if this diagonal is a winner
-        if (this.isWinningCombination(tempDiag, player)) {
-          alert(`Game over! ${player} wins!`);
-        }
+        this.isWinningCombination(tempDiag, player);
         //restart while loop but have our starting positions incremented
         // along a positively sloped diagonal
         // rowIndex and colIndex will update too
@@ -133,7 +135,8 @@ const Game = {
         startY++;
       }
     }
-    console.log('cleared positve diagonals');
+
+    // cleared positive diagonal checks
     // now check all negatively sloped diagonals
     // first check for danger zone
     if (!(x <= 2 && y < (-x + 3)) &&
@@ -142,7 +145,7 @@ const Game = {
       // find starting point
       var i = x;
       var j = y;
-      while (i <= 6 && j > 0) {
+      while (i < 6 && j > 0) {
         i++;
         j--;
       }
@@ -160,9 +163,7 @@ const Game = {
           colIndex++;
         }
         //check if this diagonal is a winner
-        if (this.isWinningCombination(tempDiag, player)) {
-          alert(`Game over! ${player} wins!`);
-        }
+        this.isWinningCombination(tempDiag, player);
         // restart loop but decrement X value and increment Y value
         // like the other diagonal function, loop will run at least once
         // if not in danger zone
@@ -170,52 +171,63 @@ const Game = {
         startY++;
       }
     }
+  },
 
-
-
+  newGame: function() {
+    this.gameBoard = [[], [], [], [], [], [], []];
+    this.currentTurn = player1.name;
+    this.winner = false;
+    this.initialize();
   }
 }
+
 
 const Presenter = {
   moveDisplay: function(cell) {
-    console.log(cell);
     var $header = $('.jumbotron h1');
-    if (Game.currentTurn === player1) {
-      cell.html('<img src="red-circle.svg">');
-      $header.html(`${player2}'s Turn!`);
+    if (Game.currentTurn === player1.name) {
+      cell.html('<img src="deadpool.svg">');
+      $header.html(`${player2.name}'s Turn!`);
     } else {
-      cell.html('<img src="yellow-circle.svg">');
-      $header.html(`${player1}'s Turn!`);
+      cell.html('<img src="flash.svg">');
+      $header.html(`${player1.name}'s Turn!`);
     }
   },
 
-
-
-
-
+  resetGameDisplay: function() {
+    $('.cell').html('<h2> Click Me </h2>');
+    var $header = $('.jumbotron h1');
+    $header.html(`${Game.currentTurn}'s Turn!`);
+    // reset game over modal contents
+    var modalBody = $('#gameOverModalBody');
+    modalBody.html('');
+  }
 }
+
 
 const AppController = {
   onClickMove: function() {
+    // check if game is over or not
+    if (Game.winner) {
+      return '';
+    }
     // check if position is valid
-    console.log('clicked');
-    if ($(this).attr('valid')) {
+    var validAttr = $(this).attr('valid');
+    if (validAttr === 'true') {
       var xPos = $(this).attr('id').charAt(3);
       var yPos = $(this).attr('id').charAt(5);
-      console.log(`${xPos}, ${yPos}`);
       Game.move(xPos, yPos);
     }
     else {
-      alert('invalid space!');
+      $('#invalidMoveModal').modal('show');
     }
   },
+
   onClickNewGame: function() {
-
+    console.log('new game button clicked');
+    Game.newGame();
+    Presenter.resetGameDisplay();
   }
-
-
 }
 
-window.onload = function() {
-  Game.initialize();
-};
+
