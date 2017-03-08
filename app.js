@@ -5,11 +5,11 @@ window.onload = function() {
 };
 
 var player1 = {
-  name: "Red",
+  name: "Deadpool",
   score: 0
 }
 var player2 = {
-  name: "Yellow",
+  name: "The Flash",
   score: 0
 }
 
@@ -28,6 +28,7 @@ const Game = {
         this.gameBoard[i][j].setAttribute('valid', false);
         this.gameBoard[i][j].className += ' animated infinite tada';
         this.gameBoard[i][j].addEventListener('click', AppController.onClickMove);
+        $('.cell').removeClass('valid');
       }
     }
     //make bottom cells valid
@@ -212,7 +213,8 @@ const Presenter = {
 
   resetGameDisplay: function() {
     $('.cell').html('<h4>Click Me</h4>');
-    $('.cell').removeClass('animated fadeInDownBig');
+    $('.cell').removeClass('animated infinite tada fadeInDownBig')
+              .addClass('animated infinite tada');
     var $header = $('.jumbotron h1');
     $header.html(`${Game.currentTurn}'s Turn!`);
     // reset game over modal contents

@@ -59,17 +59,20 @@ body {
 @media only screen and (min-width: 1200px) {
   .cell{
     height: 125px;
+    width: 125px;
   }
 }
 @media only screen and (min-width: 400px) and (max-width: 767px) {
   .cell {
     height: 75px;
+    width: 75px;
   }
 }
 
 @media only screen and (max-width: 400px) {
   .cell {
     height: 50px;
+    width: 50px;
   }
 }
 img {
@@ -79,9 +82,12 @@ img {
   margin: 0;
   border: 0;
 }
-
+.valid {
+  box-shadow: 5px 5px 5px white;
+}
 .valid:hover {
-  background: turquoise;
+  background: grey;
+  color: black;
 }
 
 .modal {
