@@ -1,6 +1,6 @@
 body {
   background-image: url("stars.png");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   color: #fff;
 }
 .page-header h1 {
@@ -53,7 +53,9 @@ body {
 }
 
 .cell {
-  padding: 10%;
+  padding: 12%;
+
+
 }
 
 img {
@@ -70,4 +72,12 @@ img {
 
 .modal {
   color: #000;
+}
+
+.jumbotron {
+  /*display: flex;
+  justify-content: center;
+  align-items: center;*/
+  text-align: center;
+  margin: 0;
 }

@@ -26,6 +26,7 @@ const Game = {
         this.gameBoard[i][j] = document.getElementById(position);
         this.gameBoard[i][j].setAttribute('player', "");
         this.gameBoard[i][j].setAttribute('valid', false);
+        this.gameBoard[i][j].className += ' animated infinite tada';
         this.gameBoard[i][j].addEventListener('click', AppController.onClickMove);
       }
     }
@@ -73,10 +74,11 @@ const Game = {
       }
     }
     this.winner = true;
-    // return true;
-    var modalBody = $('#gameOverModalBody');
-    modalBody.append(`<p>${player} wins!</p>`);
-    $('#gameOverModal').modal('show');
+    if (this.currentTurn === player1.name) {
+      player1.score++;
+    } else {player2.score++;}
+
+    Presenter.gameOverDisplay(player);
   },
 
   checkWinningCombinations: function(x, y, player) {
@@ -156,7 +158,6 @@ const Game = {
         var rowIndex = startX;
         var colIndex = startY;
         //iterate 4 times
-        console.log(`starting x coordin is ${startX}, starting y is ${startY}`);
         for (var k = 0; k < 4; k++) {
           tempDiag.push(this.gameBoard[rowIndex][colIndex]);
           rowIndex--;
@@ -185,17 +186,33 @@ const Game = {
 const Presenter = {
   moveDisplay: function(cell) {
     var $header = $('.jumbotron h1');
+    cell.removeClass('animated infinite');
     if (Game.currentTurn === player1.name) {
+      cell.addClass('animated fadeInDownBig');
       cell.html('<img src="deadpool.svg">');
       $header.html(`${player2.name}'s Turn!`);
     } else {
+      cell.addClass('animated fadeInDownBig');
       cell.html('<img src="flash.svg">');
       $header.html(`${player1.name}'s Turn!`);
     }
   },
 
+  gameOverDisplay: function(player) {
+    var modalBody = $('#gameOverModalBody');
+    modalBody.append(`<p>${player} wins! Great job!</p>`);
+    $('#gameOverModal').modal('show');
+
+    if (player === player1.name) {
+      $('#player1Score').html(`${player1.score}`);
+    } else {
+      $('#player2Score').html(`${player2.score}`);
+    }
+  },
+
   resetGameDisplay: function() {
-    $('.cell').html('<h2> Click Me </h2>');
+    $('.cell').html('<h4>Click Me</h4>');
+    $('.cell').removeClass('animated fadeInDownBig');
     var $header = $('.jumbotron h1');
     $header.html(`${Game.currentTurn}'s Turn!`);
     // reset game over modal contents
@@ -224,7 +241,6 @@ const AppController = {
   },
 
   onClickNewGame: function() {
-    console.log('new game button clicked');
     Game.newGame();
     Presenter.resetGameDisplay();
   }
