@@ -36,14 +36,18 @@ const Game = {
     x = parseInt(x);
     y = parseInt(y);
 
+    //cant update the cell above it if there is none
     if (y < 5) {
       var $nextCell = $(`#pos${x}-${y+1}`);
       $nextCell.attr('valid', true)
                .addClass('valid');
     }
 
+    //run UI function that changes the display
     Presenter.moveDisplay($currentCell);
+    //run data function that checks if someone has won
     this.checkWinningCombinations(x, y, this.currentTurn);
+    //update the currentTurn value
     this.updateTurn();
   },
 
@@ -68,9 +72,12 @@ const Game = {
   checkWinningCombinations: function(x, y, player) {
     // check every possible row combination
     //four possible row combinations regardless of where the tile is placed
+    //i.e (0,0) -> (3,0), (1,0) -> (4,0), (2,0) -> (5,0), (3,0) -> (6,0)
+    //iterate three times, within each iteration add the current value plus three more
     for (var i = 0; i < 4; i++) {
       var tempRow = [];
       for (var j = i; j < i + 4; j++) {
+        console.log(`j is ${j}`);
         tempRow.push(this.gameBoard[j][y]);
       }
       if (this.isWinningCombination(tempRow, player)) {
@@ -96,7 +103,7 @@ const Game = {
       // first compute lowest starting position for diagonal
       var i = x;
       var j = y;
-      while (i >= 0 && j >=0) {
+      while (i > 0 && j > 0) {
         i--;
         j--;
       }
@@ -104,9 +111,10 @@ const Game = {
       var startY = j;
       // have to loop over while preserving value of starting points so that
       // you can check up to three diagonals
-      while (startX < 7 && startY < 6) {
+      while (startX <= 3 && startY <= 2) {
         var tempDiag = [];
         // make a loop that iterates 4 times
+        console.log(`starting x coordin is ${startX}, starting y is ${startY}`);
         var rowIndex = startX;
         var colIndex = startY;
         for (var k = 0; k < 4; k++) {
@@ -134,20 +142,20 @@ const Game = {
       // find starting point
       var i = x;
       var j = y;
-      while (i <= 6 && j >= 0) {
+      while (i <= 6 && j > 0) {
         i++;
         j--;
       }
       var startX = i;
       var startY = j;
-      while (startX >= 0 && startY < 6) {
+      while (startX >= 3 && startY <= 2) {
         var tempDiag = [];
         var rowIndex = startX;
         var colIndex = startY;
         //iterate 4 times
         console.log(`starting x coordin is ${startX}, starting y is ${startY}`);
         for (var k = 0; k < 4; k++) {
-          tempDiag.push(this.gameBoard[i][j]);
+          tempDiag.push(this.gameBoard[rowIndex][colIndex]);
           rowIndex--;
           colIndex++;
         }
@@ -200,6 +208,9 @@ const AppController = {
     else {
       alert('invalid space!');
     }
+  },
+  onClickNewGame: function() {
+
   }
 
 
