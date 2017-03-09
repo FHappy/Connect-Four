@@ -1,8 +1,21 @@
+
+#eightBitButton {
+  font-family: eightBit;
+  /*color: black;*/
+}
+
+#vaporWaveButton {
+  font-family: aesthetic;
+  /*color: black;*/
+}
+
 body {
   background-image: url("images/stars.png");
   background-repeat: repeat-y;
   color: #fff;
-  font-family: '8BITWONDERNominal';
+  font-family: eightBit;
+  /*font-family: alienEncountersRegular;*/
+  /*font-family: aesthetic;*/
   font-weight: normal;
   font-style: normal;
 }
@@ -107,7 +120,47 @@ img {
   margin: 0;
 }
 
-/*@font-face {
+@font-face {
   font-family: eightBit;
-  src: 8-BIT-WONDER.TTF;
-}*/
+  src: url(8-BIT-WONDER.TTF);
+}
+
+@font-face {
+  font-family: aesthetic;
+  src: url(fonts/Streamster.ttf);
+}
+
+@font-face {
+  font-family: vcrAesthetic;
+  src: url(fonts/VCR_OSD_Mono.ttf);
+}
+
+@font-face {
+  font-family: alienEncountersBold;
+  src: url(fonts/Alien-Encounters-Bold.ttf);
+}
+
+@font-face {
+  font-family: alienEncountersBoldItalic;
+  src: url(fonts/Alien-Encounters-Bold-Italic.ttf);
+}
+
+@font-face {
+  font-family: alienEncountersItalic;
+  src: url(fonts/Alien-Encounters-Italic.ttf);
+}
+
+@font-face {
+  font-family: alienEncountersSolidBoldItalic;
+  src: url(fonts/Alien-Encounters-Solid-Bold-Italic.ttf);
+}
+
+@font-face {
+  font-family: alienEncountersRegular;
+  src: url(fonts/Alien-Encounters-Regular.ttf);
+}
+
+@font-face {
+  font-face: alienEncountersSolidItalic;
+  src: url(fonts/Alien-Encounters-Solid-Italic.ttf);
+}
