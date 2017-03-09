@@ -40,7 +40,9 @@ const Themes = {
         background: 'url("images/vaporwaveWallpaper.jpg")',
         player1Name: 'リサフランク420',
         player2Name: '現代のコンピュー',
-    }
+    },
+
+
 }
 
 const Game = {
@@ -296,10 +298,10 @@ const Presenter = {
                 var cell = $(position);
                 console.log(cell.attr('player'));
                 if (cell.attr('player') === oldPlayer1Name) {
-                    console.log('phase one');
+                    cell.attr('player', player1.name);
                     cell.html(theme.player1img);
                 } else if (cell.attr('player') === oldPlayer2Name) {
-                    console.log('phase two');
+                    cell.attr('player', player2.name);
                     cell.html(theme.player2img);
                 }
             }
