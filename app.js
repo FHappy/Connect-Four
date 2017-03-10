@@ -4,45 +4,49 @@ window.onload = function() {
     $('#New-Game').on('click', AppController.onClickNewGame);
     $('#eightBitButton').on('click', AppController.onClickTheme);
     $('#vaporWaveButton').on('click', AppController.onClickTheme);
+    $('#seinfeldButton').on('click', AppController.onClickTheme);
 
 };
 
 var player1 = {
     name: "Deadpool",
     score: 0,
-    // img: "images/deadpool.svg"
 }
+
 var player2 = {
-    name: "Black Mage",
+    name: "Skeletor",
     score: 0,
-    // img: "images/flash.svg"
 }
 
 const Themes = {
     eightBit: {
         font: 'eightBit',
         player1img: '<img src="images/deadpool.svg">',
-        // player2img: '<img src="images/flash.svg">',
-        player2img: '<img src="images/blackmage.JPG">',
+        player2img: '<img src="images/skeletorgif.gif">',
         background: 'url("images/stars.png")',
         player1Name: 'Deadpool',
-        player2Name: 'Black Mage',
+        player2Name: 'Skeletor',
     },
 
     vaporWave: {
         // font: 'alienEncountersItalic',
         font: 'vcrAesthetic',
-        player1img: '<img src="images/appleLogo.png">',
-        player2img: '<img src="images/windows95.svg">',
-        // player2img: '<img src="images/windows95.svg">',
-        // background: 'url("images/moreVaporwave.jpg")',
-        // background: 'url("images/vaporwavemiamigif.gif")',
+        player1img: '<img src="images/vaporwavePlaystation.gif">',
+        player2img: '<img src="images/vaporwaveCars.gif">',
         background: 'url("images/vaporwaveWallpaper.jpg")',
         player1Name: 'リサフランク420',
         player2Name: '現代のコンピュー',
     },
 
-
+    seinfeld: {
+        font: 'seinfeld',
+        // player1img: '<img src="images/kramer.jpg">',
+        player1img: '<img src="images/kramergif.gif">',
+        player2img: '<img src="images/jerryIcon.jpg">',
+        background: 'url("images/seinfeldGeorgeBackground.jpg")',
+        player1Name: 'Kramer',
+        player2Name: 'Jerry',
+    }
 }
 
 const Game = {
@@ -273,6 +277,7 @@ const Presenter = {
         if (player === player1.name) {
             $('#player1Score').html(`${player1.score}`);
         } else {
+            console.log('else statement ran');
             $('#player2Score').html(`${player2.score}`);
         }
     },
@@ -336,6 +341,12 @@ const Presenter = {
                 $('body').css('background-repeat', 'repeat-y');
                 $('body').css('background-position', 'none');
                 $('body').css('color', '#fff');
+                break;
+
+            case Themes.seinfeld:
+                $('body').css('background-repeat', 'repeat-y');
+                $('body').css('background-position', 'center');
+                // $('body').css('color', 'red');
                 break;
         }
 

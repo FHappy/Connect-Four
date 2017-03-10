@@ -9,6 +9,12 @@
   /*color: black;*/
 }
 
+#seinfeldButton {
+  font-family: seinfeld;
+  color: red;
+  background-color: yellow;
+}
+
 body {
   background-image: url("images/stars.png");
   background-repeat: repeat-y;
@@ -161,6 +167,21 @@ img {
 }
 
 @font-face {
-  font-face: alienEncountersSolidItalic;
+  font-family: alienEncountersSolidItalic;
   src: url(fonts/Alien-Encounters-Solid-Italic.ttf);
+}
+
+@font-face {
+  font-family: seinfeld;
+  src: url(fonts/ITC-fenice-oblique.otf);
+}
+
+@font-face {
+  font-family: feniceItalic;
+  src: url(fonts/Fenice Italic.ttf);
+}
+
+@font-face {
+  font-family: polya;
+  src: url(fonts/POLYA.otf);
 }
