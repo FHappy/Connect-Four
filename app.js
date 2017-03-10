@@ -5,6 +5,7 @@ window.onload = function() {
     $('#vaporWaveButton').on('click', AppController.onClickTheme);
     $('#seinfeldButton').on('click', AppController.onClickTheme);
     $('#adultSwimButton').on('click', AppController.onClickTheme);
+    $('#gameOfThronesButton').on('click', AppController.onClickTheme);
 
 };
 
@@ -60,6 +61,16 @@ const Themes = {
         player1Name: 'Ignignokt',
         player2Name: 'Err',
         playingSound: 'adultSwimSound',
+    },
+
+    gameOfThrones: {
+        font: 'gameOfThrones',
+        player1img: '<img src="images/hodor.gif">',
+        player2img: '<img src="images/joffrey.gif">',
+        background: 'url("images/gameOfThronesBackground.jpg")',
+        player1Name: 'Hodor',
+        player2Name: 'Joffrey',
+        playingSound: 'gameOfThronesSound',
     }
 
 }
@@ -372,6 +383,11 @@ const Presenter = {
             case Themes.adultSwim:
                 $('body').css('background-repeat', 'repeat repeat');
                 // $('body').css('background-repeat', 'repeat-x');
+                $('body').css('background-position', 'center');
+                break;
+
+            case Themes.gameOfThrones:
+                $('body').css('background-repeat', 'no-repeat');
                 $('body').css('background-position', 'center');
                 break;
         }

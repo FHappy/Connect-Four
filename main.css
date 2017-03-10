@@ -22,6 +22,12 @@
   border: 2px solid white;
 }
 
+#gameOfThronesButton {
+  font-family: gameOfThrones;
+  color: black;
+  background-color: grey;
+}
+
 body {
   background-image: url("images/stars.png");
   background-repeat: repeat-y;
@@ -204,4 +210,9 @@ img {
 @font-face {
   font-family: adultSwim;
   src: url(fonts/HelveticaNeue-CondensedBold.ttf);
+}
+
+@font-face {
+  font-family: gameOfThrones;
+  src: url(fonts/gameOfThrones.ttf);
 }
