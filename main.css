@@ -15,6 +15,13 @@
   background-color: yellow;
 }
 
+#adultSwimButton {
+  font-family: adultSwim;
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+}
+
 body {
   background-image: url("images/stars.png");
   background-repeat: repeat-y;
@@ -90,12 +97,20 @@ body {
     height: 75px;
     width: 75px;
   }
+
+  h4 {
+    font-size: 0.75em;
+  }
 }
 
 @media only screen and (max-width: 400px) {
   .cell {
     height: 50px;
     width: 50px;
+  }
+
+  h4 {
+    font-size: 0.5em;
   }
 }
 img {
@@ -184,4 +199,9 @@ img {
 @font-face {
   font-family: polya;
   src: url(fonts/POLYA.otf);
+}
+
+@font-face {
+  font-family: adultSwim;
+  src: url(fonts/HelveticaNeue-CondensedBold.ttf);
 }

@@ -1,10 +1,10 @@
-
 window.onload = function() {
     Game.initialize();
     $('#New-Game').on('click', AppController.onClickNewGame);
     $('#eightBitButton').on('click', AppController.onClickTheme);
     $('#vaporWaveButton').on('click', AppController.onClickTheme);
     $('#seinfeldButton').on('click', AppController.onClickTheme);
+    $('#adultSwimButton').on('click', AppController.onClickTheme);
 
 };
 
@@ -50,6 +50,17 @@ const Themes = {
         player2Name: 'Jerry',
         playingSound: 'seinfeldSound'
     },
+
+    adultSwim: {
+        font: 'adultSwim',
+        player1img: '<img src="images/adultSwimAlien1.gif">',
+        player2img: '<img src="images/adultSwimAlien3.gif">',
+        background: 'url("images/adultSwimBackground.jpg")',
+        // background: 'url("images/adultSwimBackground2.png")',
+        player1Name: 'Ignignokt',
+        player2Name: 'Err',
+        playingSound: 'adultSwimSound',
+    }
 
 }
 
@@ -356,6 +367,12 @@ const Presenter = {
                 $('body').css('background-repeat', 'repeat-y');
                 $('body').css('background-position', 'center');
                 // $('body').css('color', 'red');
+                break;
+
+            case Themes.adultSwim:
+                $('body').css('background-repeat', 'repeat repeat');
+                // $('body').css('background-repeat', 'repeat-x');
+                $('body').css('background-position', 'center');
                 break;
         }
 
