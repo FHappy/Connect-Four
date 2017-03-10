@@ -13,4 +13,4 @@ Resources utilized:
 jquery, bootstrap, javascript, several random fonts from google.
 Animate.css : https://github.com/daneden/animate.css, 
 
-![WireFrame](Connect-Four/images/wireframe.jpg ?raw=true "Optional Title")
+![WireFrame](Connect-Four/images/wireframe.JPG ?raw=true "Optional Title")
