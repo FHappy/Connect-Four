@@ -26,6 +26,7 @@ const Themes = {
         background: 'url("images/stars.png")',
         player1Name: 'Deadpool',
         player2Name: 'Skeletor',
+        playingSound: 'eightBitSound'
     },
 
     vaporWave: {
@@ -36,6 +37,7 @@ const Themes = {
         background: 'url("images/vaporwaveWallpaper.jpg")',
         player1Name: 'リサフランク420',
         player2Name: '現代のコンピュー',
+        playingSound: 'vaporwaveSound'
     },
 
     seinfeld: {
@@ -46,7 +48,9 @@ const Themes = {
         background: 'url("images/seinfeldGeorgeBackground.jpg")',
         player1Name: 'Kramer',
         player2Name: 'Jerry',
-    }
+        playingSound: 'seinfeldSound'
+    },
+
 }
 
 const Game = {
@@ -54,6 +58,7 @@ const Game = {
     startingTurn: player1.name,
     currentTurn: player1.name,
     currentTheme: Themes.eightBit,
+    currentSong: 'eightBitSound',
     winner: false,
     initialize: function() {
         // initialize gameBoard
@@ -95,10 +100,13 @@ const Game = {
 
         //run UI function that changes the display
         Presenter.moveDisplay($currentCell);
+        //make audio file play
+        document.getElementById(this.currentSong).play();
         //run data function that checks if someone has won
         this.checkWinningCombinations(x, y, this.currentTurn);
         //update the currentTurn value
         this.updateTurn();
+
     },
 
     updateTurn: function() {
@@ -248,6 +256,7 @@ const Game = {
         // update images for all cells before updating Game.currentTheme
         Presenter.updateThemeDisplay(theme);
         this.currentTheme = theme;
+        this.currentSong = theme.playingSound;
     }
 }
 
