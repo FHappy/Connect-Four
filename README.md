@@ -6,6 +6,8 @@ For Project #1, I endeavored to make a connect four game. The user will play aga
 #Deployed App:
 
 https://fhappy.github.io/Connect-Four/
+better link:
+http://fhappy-connect-four.bitballoon.com/
 
 #Trello:
 
